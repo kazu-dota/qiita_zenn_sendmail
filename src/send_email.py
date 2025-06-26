@@ -1,20 +1,30 @@
 import os
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
 
 def send_summary_email(subject, content, to_email, from_email):
-    message = Mail(
-        from_email=from_email,
-        to_emails=to_email,
-        subject=subject,
-        html_content=content
-    )
+    # メール本文をMIMETextオブジェクトとして作成
+    msg = MIMEText(content, 'html', 'utf-8')
+    msg['Subject'] = Header(subject, 'utf-8')
+    msg['From'] = from_email
+    msg['To'] = to_email
+
     try:
-        sendgrid_client = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
-        response = sendgrid_client.send(message)
-        print(f"Email sent successfully. Status Code: {response.status_code}")
-        print(response.body)
-        print(response.headers)
+        # GmailのSMTPサーバーに接続
+        # ポート587はTLS暗号化を使用
+        with smtplib.SMTP('smtp.gmail.com', 587) as smtp_server:
+            smtp_server.ehlo() # EHLOコマンドでSMTPサーバーに自己紹介
+            smtp_server.starttls() # TLS暗号化を開始
+            smtp_server.ehlo() # TLS開始後に再度EHLO
+
+            # Gmailアカウントにログイン
+            # パスワードはアプリパスワードを使用
+            smtp_server.login(from_email, os.getenv('GMAIL_APP_PASSWORD'))
+
+            # メールを送信
+            smtp_server.send_message(msg)
+            print("Email sent successfully using Gmail SMTP.")
     except Exception as e:
         print(f"Error sending email: {e}")
 
