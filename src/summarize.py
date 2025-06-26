@@ -4,11 +4,7 @@ import os
 def summarize_articles(articles, platform_name):
     genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-    # 利用可能なモデルをリストするコード (一時的に追加)
-    for m in genai.list_models():
-        print(f"Model Name: {m.name}, Supported Methods: {m.supported_generation_methods}")
-
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-2.5-flash')
 
     article_list_str = ""
     for i, article in enumerate(articles):
