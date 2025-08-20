@@ -10,7 +10,7 @@
 - GitHub Actionsによる日次自動実行
 
 ## 送信例
-![Uploading image.png…]()
+![送信例](mail_sample.png)
 
 ## セットアップ
 
