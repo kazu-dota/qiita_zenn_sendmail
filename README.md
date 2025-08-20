@@ -10,31 +10,7 @@
 - GitHub Actionsによる日次自動実行
 
 ## 送信例
-
-> 今日のトレンド要約
-> Qiitaトレンド
-> Qiitaのトレンド記事リストを要約します。今回は、AI/開発支援ツール、JavaScriptの基礎、セキュリティ、個人開発、インフラ、そして学習・概念理解に関する幅広いトピックが注目されています。
-> **Qiitaトレンド記事要約**
-> 今回のQiitaトレンドでは、**AIの活用**が特に目立ち、開発支援ツール、議事録作成、個人開発アプリなど多岐にわたります。また、**JavaScriptの基礎**や、**セキュリティ関連**の解説記事も人気です。
-> 以下に記事をカテゴリ別にまとめます。
-> ### AI・開発支援・自動化
-> AIを活用した開発効率化やツールに関する記事が多数ランクインしています。
-> * **1. お盆休みに「AIで議事録ツールをつくって。簡単なのでいいから」と言われたときのレシピ** (https://qiita.com/R_28/items/dbcce690a69bf7964423?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items)
-> * AIを用いた議事録ツールの簡単な作成レシピ。
-> * **4. Claude Code で GitHub Projects管理効率化** (https://qiita.com/hgkcho/items/50eb441e1ea88df33387?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items)
-> * Claude Codeを活用したGitHub Projectsの管理効率化について。
-> * **5. 【実案件使用】Cursorプロンプト × コード公開！ ②バグ修正編** (https://qiita.com/ShotaFukuyama/items/1d2f3dae7e1598a3a532?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items)
-> * Cursorプロンプトを使ったバグ修正の実例とコード公開。
-> * **10. 簡単！M365 Copilot で MS Docs MCP を使う** (https://qiita.com/aktsmm/items/928cbcbd61d1s54091e0?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items)
-> * M365 CopilotでMicrosoft Docsの認定資格対策を行う方法。
-> * **17. From Early Adopter to AI Skeptic... and Back** (https://qiita.com/qngdt/items/2171a9b4bcba762bdc8a?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items)
-> * AIに対する懐疑から再び肯定するまでの個人の視点の変化。
-> * **20. TDDでClaudeCodeのビックバン変更と向き合おう** (https://qiita.com/katamotokosuke/items/b254a793e2d5a6633841?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items)
-> * TDD（テスト駆動開発）を用いてClaude Codeの大規模な変更に対応する方法。
-> * **25. GitHub Copilotと仲良くなろう！** (https://qiita.com/im_yoneda/items/fae79d30df9ed900efa3?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items)
-> * GitHub Copilotの活用術や親しみ方について。
-> * **27. 【Amazon Q】AWSミートアップ参加レポート：LT初登壇！多彩な発表が教えてくれたゲーム制作裏側の苦労・工夫** (https://qiita.com/melknzw/items/03dfe8aa4c8b1fb8fa6f?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items)
-> * Amazon Qを含むAWSミートアップの参加レポート、ゲーム制作の裏側に関する発表内容。
+![Uploading image.png…]()
 
 ## セットアップ
 
