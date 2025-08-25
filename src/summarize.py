@@ -34,7 +34,7 @@ def summarize_articles(articles, platform_name):
         return response.text
     except Exception as e:
         print(f"Error summarizing articles: {e}")
-        return f"記事の要約中にエラーが発生しました: {e}")
+        return f"記事の要約中にエラーが発生しました: {e}"
 
 def generate_overall_trend_summary(qiita_articles, zenn_articles):
     """全体のトレンド概要と領域別サマリーを生成"""
