@@ -28,11 +28,12 @@ def markdown_to_html(markdown_text):
     
     return html
 
-def create_email_content(qiita_summary, zenn_summary):
+def create_email_content(overall_trend_summary, qiita_summary, zenn_summary):
     """
-    Qiita・Zennの要約からHTMLメール本文を作成する
+    全体トレンド要約とQiita・Zennの要約からHTMLメール本文を作成する
     
     Args:
+        overall_trend_summary (str): 全体のトレンド要約（Markdown形式）
         qiita_summary (str): Qiitaトレンドの要約（Markdown形式）
         zenn_summary (str): Zennトレンドの要約（Markdown形式）
         
@@ -40,6 +41,7 @@ def create_email_content(qiita_summary, zenn_summary):
         str: HTMLフォーマットされたメール本文
     """
     # Markdownを適切なHTMLに変換
+    overall_trend_html = markdown_to_html(overall_trend_summary)
     qiita_html = markdown_to_html(qiita_summary)
     zenn_html = markdown_to_html(zenn_summary)
     
@@ -51,15 +53,22 @@ def create_email_content(qiita_summary, zenn_summary):
             今日のトレンド要約
         </h1>
         
+        <h2 style="color: #6f42c1; margin-top: 30px;">
+            🔍 今日のトレンド概要
+        </h2>
+        <div style="background-color: #f8f9fa; padding: 20px; border-left: 4px solid #6f42c1; margin-bottom: 30px; border-radius: 5px;">
+            {overall_trend_html}
+        </div>
+        
         <h2 style="color: #e74c3c; margin-top: 30px;">
-            📈 Qiitaトレンド
+            📈 Qiitaトレンド（詳細）
         </h2>
         <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #17a2b8; margin-bottom: 20px;">
             {qiita_html}
         </div>
         
         <h2 style="color: #28a745; margin-top: 30px;">
-            📊 Zennトレンド
+            📊 Zennトレンド（詳細）
         </h2>
         <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #28a745;">
             {zenn_html}
@@ -77,6 +86,22 @@ def create_email_content(qiita_summary, zenn_summary):
 
 if __name__ == "__main__":
     # テスト用のMarkdownテキスト
+    test_overall_summary = """
+    **今日のトレンド概要**
+    
+    今日はAI関連とWeb開発の記事が特に注目を集めています。機械学習の実装テクニックとフロントエンド開発のベストプラクティスが多く見られました。
+    
+    **領域別分析**
+    
+    🤖 **AI・機械学習**
+    - Python機械学習ライブラリの活用方法
+    - LLM統合の実装パターン
+    
+    💻 **Web開発**
+    - React/TypeScriptでの型安全な開発手法
+    - モダンなフロントエンド開発環境の構築
+    """
+    
     test_qiita_summary = """
     **今日の注目記事**
 
@@ -101,6 +126,6 @@ if __name__ == "__main__":
        - 開発環境の構築方法
     """
     
-    html_output = create_email_content(test_qiita_summary, test_zenn_summary)
+    html_output = create_email_content(test_overall_summary, test_qiita_summary, test_zenn_summary)
     print("Generated HTML content:")
     print(html_output)

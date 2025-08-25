@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from src.fetch_trends import fetch_qiita_trends, fetch_zenn_trends
 from src.fetch_content import fetch_articles_content
-from src.summarize import summarize_articles
+from src.summarize import summarize_articles, generate_overall_trend_summary
 from src.send_email import send_summary_email
 from src.format_email import create_email_content
 
@@ -41,9 +41,13 @@ def main():
     print("Summarizing Zenn trends...")
     zenn_summary = summarize_articles(zenn_articles_with_content, "Zenn")
 
+    # 全体のトレンド概要を生成
+    print("Generating overall trend summary...")
+    overall_trend_summary = generate_overall_trend_summary(qiita_articles_with_content, zenn_articles_with_content)
+
     # メール内容の作成
     subject = "今日のQiitaとZennのトレンド要約"
-    html_content = create_email_content(qiita_summary, zenn_summary)
+    html_content = create_email_content(overall_trend_summary, qiita_summary, zenn_summary)
 
     # メール送信
     print("Sending summary email...")
