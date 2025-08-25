@@ -4,6 +4,7 @@ from src.fetch_trends import fetch_qiita_trends, fetch_zenn_trends
 from src.fetch_content import fetch_articles_content
 from src.summarize import summarize_articles
 from src.send_email import send_summary_email
+from src.format_email import create_email_content
 
 def main():
     load_dotenv() # .envファイルから環境変数を読み込む
@@ -42,9 +43,7 @@ def main():
 
     # メール内容の作成
     subject = "今日のQiitaとZennのトレンド要約"
-    html_content = f"<h1>今日のトレンド要約</h1>"
-    html_content += f"<h2>Qiitaトレンド</h2><p>{qiita_summary.replace("\n", "<br>")}</p>"
-    html_content += f"<h2>Zennトレンド</h2><p>{zenn_summary.replace("\n", "<br>")}</p>"
+    html_content = create_email_content(qiita_summary, zenn_summary)
 
     # メール送信
     print("Sending summary email...")
