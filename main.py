@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from src.fetch_trends import fetch_qiita_trends, fetch_zenn_trends
+from src.fetch_content import fetch_articles_content
 from src.summarize import summarize_articles
 from src.send_email import send_summary_email
 
@@ -15,15 +16,29 @@ def main():
         print("Error: SENDER_EMAIL or RECEIVER_EMAIL is not set in .env file.")
         return
 
-    # Qiitaトレンドの取得と要約
+    # Qiitaトレンドの取得
     print("Fetching Qiita trends...")
     qiita_articles = fetch_qiita_trends()
-    qiita_summary = summarize_articles(qiita_articles, "Qiita")
+    
+    # Qiita記事の内容を取得（上位5件）
+    print("Fetching Qiita article contents...")
+    qiita_articles_with_content = fetch_articles_content(qiita_articles, max_articles=5)
+    
+    # Qiitaトレンドの要約
+    print("Summarizing Qiita trends...")
+    qiita_summary = summarize_articles(qiita_articles_with_content, "Qiita")
 
-    # Zennトレンドの取得と要約
+    # Zennトレンドの取得
     print("Fetching Zenn trends...")
     zenn_articles = fetch_zenn_trends()
-    zenn_summary = summarize_articles(zenn_articles, "Zenn")
+    
+    # Zenn記事の内容を取得（上位5件）
+    print("Fetching Zenn article contents...")
+    zenn_articles_with_content = fetch_articles_content(zenn_articles, max_articles=5)
+    
+    # Zennトレンドの要約
+    print("Summarizing Zenn trends...")
+    zenn_summary = summarize_articles(zenn_articles_with_content, "Zenn")
 
     # メール内容の作成
     subject = "今日のQiitaとZennのトレンド要約"
